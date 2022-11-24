@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+class student
+{
+String usn;
+String name;
+int credits[]= new int[9];
+int marks[]= new int[9];
+
+void enterInfo()
+{
+Scanner sc = new Scanner(System.in);
+
+System.out.println("enter the USN");
+this.usn = sc.nextLine();
+
+System.out.println("Enter the Name: ");
+this.name= sc.nextLine();
+
+System.out.println("Enter the credits: ");
+for(int i=0;i<9;i++)
+{
+this.credits[i]=sc.nextInt();
+}
+
+System.out.println("enter your marks: ");
+for(int i=0;i<9;i++)
+{
+this.marks[i]=sc.nextInt();
+}
+}
+
+void displayInfo()
+{
+System.out.println("\nBelow is the Student Information:-\n");
+System.out.println("USN: "+this.usn);
+System.out.println("NAME: "+this.name);
+
+System.out.println("CREDITS: ");
+for(int i=0;i<9;i++)
+{
+System.out.println(this.marks[i]+" ");
+}
+}
+
+float calculateSGPA()
+{
+float sgpa;
+
+float totalcreds=0;
+for(int i=0;i<9;i++)
+{
+totalcreds+=this.credits[i];
+}
+
+float gp=0;
+for(int i=0;i<9;i++)
+{
+gp+=this.credits[i]*(((this.marks[i])/10)+1);
+}
+
+sgpa=gp/totalcreds;
+return sgpa;
+}
+}
+
+public class calc
+{
+public static void main(String args[])
+{
+student s1= new student();
+s1.enterInfo();
+s1.displayInfo();
+float sgpa=s1.calculateSGPA();
+System.out.println("\nSGPA: "+sgpa);
+}
+}
