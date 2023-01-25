@@ -1,0 +1,86 @@
+package CIE;
+import java.util.Scanner;
+public class Internals 
+{
+    public int Imarks[]= new int[5];
+    public void getmi()
+    {
+        Scanner ss=new Scanner(System.in);
+        System.out.println("Enter marks scored in 5 courses:");
+        for(int i=0; i<=4; i++)
+        {  Imarks[i]=ss.nextInt(); }
+    }
+    public void dispmi()
+    {
+        System.out.println("INTERNAL MARKS");
+        for(int i=0; i<=4; i++)
+        {  System.out.println("Subject"+i+"="+Imarks[i]); }
+    }
+}
+
+package SEE;
+
+import java.util.Scanner;
+import CIE.*;
+public class External extends CIE.Internals
+{
+    int Smarks[]= new int[5];
+    public void getm()
+    {
+        Scanner ss=new Scanner(System.in);
+        System.out.println("Enter external marks scored in 5 courses:");
+        for(int i=0; i<=4; i++)
+        {  Smarks[i]=ss.nextInt(); }
+    }
+    public void dispm()
+    {
+        System.out.println("EXTERNAL MARKS");
+        for(int i=0; i<=4; i++)
+        {  System.out.println("Subject"+i+"="+Smarks[i]); }
+    }
+    public void finalcal()
+    {
+int Final[]=new int[5];
+        for(int j=0; j<=4; j++)
+        {  Final[j]=Imarks[j]+(Smarks[j]/2); }
+        System.out.println("FINAL MARKS");
+for(int i=0; i<=4; i++)
+{  System.out.println("Subject"+i+"="+Final[i]); }
+  }
+}
+
+package CIE;
+import java.util.Scanner;
+public class Student
+{
+    public String usn, name; 
+    public int sem;
+    public void getd()
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.println("Enter USN, NAME & SEM");
+        usn=s.next(); 
+        name=s.next();
+        sem= s.nextInt();
+    }
+    public void disp()
+    {
+        System.out.println("\nStudent Details:\nUSN:"+usn+"\nNAME:"+name
+        +"\nSEM:"+sem);
+    }
+}
+
+import CIE.*;
+import SEE.*;
+
+class P_main
+{ public static void main(String arg[])
+  {
+	Student s1= new Student();
+         s1.getd();s1.disp();
+      External e1=new External();
+      e1.getmi(); e1.dispmi(); e1.getm();
+      e1.dispm();e1.finalcal();
+
+}
+}
